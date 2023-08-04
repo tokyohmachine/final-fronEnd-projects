@@ -1,0 +1,37 @@
+/* styles.module.css */
+
+/* Define CSS variables for reusability */
+:root {
+    --code-background-color: #f4f4f4;
+    --function-color: blue;
+    --function-name-color: red;
+    --logical-operator-color: #990000;
+    --comment-color: gray;
+  }
+  
+  /* Styles for the code block */
+  .codeBlock {
+    font-family: monospace;
+    font-size: 14px;
+    background-color: var(--code-background-color);
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  /* Apply custom styles to specific elements within the code block */
+  .token.function {
+    color: var(--function-color);
+  }
+  
+  .token.function-name {
+    color: var(--function-name-color);
+  }
+  
+  .token.operator.logical {
+    color: var(--logical-operator-color);
+  }
+  
+  .token.comment {
+    color: var(--comment-color);
+  }
+  

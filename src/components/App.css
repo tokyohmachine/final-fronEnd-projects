@@ -1,0 +1,131 @@
+
+
+body {
+  background-color: #7895CB;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.editor-container {
+  border: 2px solid black;
+  width: 100%;
+  max-width: 600px;
+  margin: 30px auto;
+  border-radius: 5px;
+  
+}
+
+#editor {
+  height: 200px;
+  width: 100%;
+  padding: 0.625rem;
+  resize: vertical;
+  overflow-y: auto; 
+  font-size: 16px;
+  background-color: #C5DFF8;
+  
+}
+
+.expanded {
+  /* 850px */
+  height: auto; 
+}
+
+.title {
+  display: flex;
+border-bottom: 2px solid black;
+}
+
+.col {
+  flex: 1;
+}
+
+.fa .fa-free-code-camp {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.fa-arrows-alt {
+  display: block;
+  margin-right: 10px;
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.fa-arrows-alt:hover {
+  background-color: aquamarine;
+}
+
+#hide-editor, #hide-preview {
+  display: none;
+  margin-right: 15px;
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+
+/* PREVIEW */
+
+.preview-container {
+  border: 2px solid black;
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto;
+  border-radius: 5px;
+  
+}
+
+#preview {
+  background-color: #C5DFF8;
+  height: auto;
+  width: 100%;
+  padding: 20px;
+  resize: vertical;
+  
+}
+
+
+.input {
+  line-height: 1.5; /* Adjust the line height as needed */
+}
+
+.input h1 {
+  border-bottom: 2px solid black;
+}
+.input h2 {
+  border-bottom: 1px solid black;
+}
+.input h1,
+.input h2,
+.input h3,
+.input h4,
+.input h5,
+.input h6, .input p {
+  margin: 0.5em 0; /* Adjust the margins around headings */
+  
+}
+
+table {
+  border-collapse: collapse !important;
+  margin: 15px 0;
+  height: auto;
+  width: auto;
+}
+
+tbody, td, tfoot, th, thead, tr {
+  border: 1px solid black!important;
+  padding: 0 15px !important;
+  
+}
+table tr:nth-child(2n) {
+  background: rgb(169, 204, 240)
+}
+
