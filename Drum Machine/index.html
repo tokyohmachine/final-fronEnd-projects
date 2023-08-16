@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum Machine</title>
+    <link rel="stylesheet" href="style.css" />
+    
+</head>
+<body>
+
+    <div id="drum-machine">
+        <div class="space">
+
+        <div id="display" class="divide">
+            <!--  Within #drum-machine I can see 9 clickable "drum pad" elements, each with a class 
+                name of "drum-pad", a unique id that describes the audio clip the drum pad will be 
+                set up to trigger, and an inner text that corresponds to one of the following keys 
+                on the keyboard: Q, W, E, A, S, D, Z, X, C. The drum pads MUST be in this order. -->
+            <button class="drum-pad">
+            <audio src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" class="clip" id="Q" ></audio>
+            Q
+            </button>
+            <button class="drum-pad">
+                <audio src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3" class="clip" id="W"></audio>
+                W</button>
+            <button class="drum-pad">
+                <audio src="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3" class="clip" id="E"></audio>
+                E</button>
+            <button class="drum-pad">
+                <audio src="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3" class="clip" id="A"></audio>
+                A</button>
+            <button class="drum-pad">
+                <audio src="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3" class="clip" id="S"></audio>
+                S</button>
+            <button class="drum-pad">
+                <audio src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3" class="clip" id="D"></audio>
+                D</button>
+            <button class="drum-pad">
+                <audio src="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3" class="clip" id="Z"></audio>
+                Z</button>
+            <button class="drum-pad">
+                <audio src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3" class="clip" id="X"></audio>
+                X</button>
+            <button class="drum-pad">
+                <audio src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3" class="clip" id="C"></audio>
+                C</button>
+        </div>
+
+        <div class="divide sc">
+            <div class="second-column">
+                <div class="power-button">
+                    <p class="p-power">Power</p>
+                    <label class="switch power">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+    
+                <div class="music-title">
+                    <p class="Q title">Heater 1</p>
+                    <p class="W title">Heater 2</p>
+                    <p class="E title">Heater 3</p>
+                    <p class="A title">Heater 4</p>
+                    <p class="S title">Clap</p>
+                    <p class="D title">Open-HH</p>
+                    <p class="Z title">Kick-n'-Hat</p>
+                    <p class="X title">Kick</p>
+                    <p class="C title">Closed-HH</p>
+
+                    <p id="volumeValue">Volume: </p>
+                </div>
+
+                
+                <input type="range" min="1" max="100" value="50" 
+                class="volume" id="myRange">
+               
+                    
+                
+                
+                <div class="bank-button">
+                    <p class="p-bank">Bank</p>
+                    <label class="switch bank">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+            </div>
+
+        </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
+
+
