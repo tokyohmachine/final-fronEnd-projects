@@ -9,28 +9,19 @@ body {
     border: 4px solid #F86F03;
     background-color: #9BA4B5;
     margin: 10% auto;
+    display: flex;
+    
 }
 
-.space {
+#display {
     margin: 10px;
     display: flex;
-   
-    
     
 }
 
 .divide {
     flex: 1;
-    
-    
 }
-
-#display {
-    margin-top: 10px;
-    margin-left: 15px;
-    
-}
-
 .drum-pad {
     width: 100px;
     height: 90px;
@@ -93,9 +84,7 @@ button:hover {
     border: 2px solid #000;
   }
   
-.power:active {
 
-}
   
 .slider {
     position: absolute;
