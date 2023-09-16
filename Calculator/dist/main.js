@@ -1,67 +1,6 @@
-$(document).ready(function () { 
-
-
-const displayScreen = document.querySelector('#display');
-const buttons = document.querySelectorAll('button');
-let decimalClicked = false;
-let resetArr = [];
-
-
-buttons.forEach(function(button) {
-    button.addEventListener('click', function(e) {
-        var value = e.target.innerText;
-        var currentDisplay = displayScreen.innerText;
-
-        if (value === 'AC') {
-            resetArr = [];
-            displayScreen.innerText = '0';
-        } else if (value === '=') {
-            try {
-                // Replace ÷ with / and x with * in the expression
-                var expression = currentDisplay.replace(/÷/g, '/').replace(/x/g, '*');
-                // Use eval to calculate the result of the expression
-                var result = eval(expression);
-                // Round the result to 4 decimal places
-                result = roundToPrecision(result, 4);
-                // Update the display with the rounded result
-                displayScreen.innerText = result;
-                resetArr = [];
-            } catch (error) {
-                // Handle any errors that may occur during evaluation
-                displayScreen.innerText = 'Error';
-            }
-        } else if (value === 'decimal') {
-            // Check if the current display contains a decimal already
-            if (currentDisplay.indexOf('.') === -1) { // Check if there is no dot
-                // Check if the last character is an operator or if it's the first character
-                if (!/[+\-*\/]$/.test(currentDisplay) || currentDisplay === '') {
-                    displayScreen.innerText += '0' + value;
-                } else {
-                    displayScreen.innerText += value;
-                }
-            }
-        } else if (['+', '-', '*', '/'].includes(value)) {
-            // Check if the last character is an operator or if it's the first character
-            if (!/[+\-*\/]$/.test(currentDisplay) || currentDisplay === '') {
-                displayScreen.innerText += value;
-            } else {
-                // Replace the last operator with the new one
-                let newDisplay = currentDisplay.slice(0, -1) + value;
-                displayScreen.innerText = newDisplay;
-            }
-        } else {
-            if (currentDisplay === '0' || currentDisplay === '0.') {
-                displayScreen.innerText = value;
-            } else if (value !== '.' || !currentDisplay.includes('.')) {
-                // Add a digit if it's not a dot or if there's no dot in the current number
-                displayScreen.innerText += value;
-            } else {
-                displayScreen.innerText += value;
-            }
-        }
-    });
-});
-
+var displayScreen = document.querySelector('#display');
+var resetArr = [];
+var lastOperator = null;
 
 function calculateExpression(expression) {
     expression = expression.replace(/÷/g, '/').replace(/x/g, '*');
@@ -74,5 +13,54 @@ function roundToPrecision(number, precision) {
     return Math.round(number * factor) / factor;
 }
 
+function handleOperator(newOperator) {
+  const currentText = displayScreen.innerText;
+  const lastChar = currentText.charAt(currentText.length - 1);
 
+  if (['+', '*', '/'].includes(lastChar) && newOperator !== '-') {
+    // Remove the previously clicked operator
+    displayScreen.innerText = currentText.slice(0, -1) + newOperator;
+  } else {
+    // Append the new operator
+    displayScreen.innerText += newOperator;
+  }
+}
+
+function handleNumber(number) {
+    const currentText = displayScreen.innerText;
+    
+    if (currentText === '0' || currentText === '') {
+        displayScreen.innerText = number;
+    } else {
+        displayScreen.innerText += number;
+    }
+}
+
+document.querySelector('#clear').addEventListener('click', () => {
+    displayScreen.innerText = 0; //'0'
 });
+
+document.querySelector('#equals').addEventListener('click', () => {
+    displayScreen.innerText = calculateExpression(displayScreen.innerText);
+    resetArr = [];
+});
+
+document.querySelector('#decimal').addEventListener('click', () => {
+    const currentNumber = displayScreen.innerText.split(/[+\-*/]/).pop();
+    if (!currentNumber.includes('.')) {
+        displayScreen.innerText += '.';
+    }
+});
+
+document.querySelectorAll('#divide, #multiply, #add, #subtract').forEach(operator => {
+    operator.addEventListener('click', () => {
+        handleOperator(operator.innerText);
+    });
+});
+
+document.querySelectorAll('#zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine').forEach(button => {
+    button.addEventListener('click', () => {
+        handleNumber(button.innerText);
+    });
+});
+
