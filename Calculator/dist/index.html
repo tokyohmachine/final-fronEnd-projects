@@ -6,74 +6,66 @@
     <title>JavaScript Calculator</title>
     
     <link href="output.css" rel="stylesheet">
-  </head>
-  <body class="bg-gray-400" style="display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #435B66;">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.7.0/math.js"></script>
 
-    <div id="calculator" style=" background:linear-gradient(#8567cc, #4ec5d4); padding:10px;height: 470px;border-radius: 5px;margin-top: 30px;">
-      <div id="display" class="" style="width: 340px; 
-      height: 100px; 
-      padding: 2px;
-      background-color: rgb(176, 205, 176);
-      font-size: 30px; 
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end"></div>
+  </head>
+  <body class="flex justify-center items-center flex-col bg-gray-300">
+
+    <div id="calculator" class="p-1 h-auto rounded-md my-8 bg-stone-950" style="overflow: hidden; box-shadow: -1px 1px 49px 19px rgba(0,0,0,0.78); -webkit-box-shadow: -1px 1px 49px 19px rgba(0,0,0,0.78); -moz-box-shadow: -1px 1px 49px 19px rgba(0,0,0,0.78);">
+      <div id="display" class=" p-1 flex text-3xl items-end justify-end bg-stone-950 text-white" 
+      style=" width: 270px; height: 140px ; z-index: 10"></div>
       
       <!-- buttons -->
-      <div id="buttons" style="width: 340px; display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;">
+      <div id="buttons" style="width: 270px; display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;">
 
-        <button  id="clear" style="width: 165px; " class="h-16 m-px  bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded">
+        <button  id="clear" style="width: 130px; " class="text-2xl h-16 m-px bg-stone-300 hover:bg-stone-400 text-black font-bold py-2 px-4 rounded-full">
           AC</button>
-        <button  id="divide" style="width: 82px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
-        ÷</button>
-        <button  id="multiply" style="width: 82px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
-          x</button>
+        <button  id="divide" style="width: 65px;" class="text-2xl h-16 m-px  bg-stone-300  hover:bg-stone-400 text-black font-bold py-2 px-4 rounded-full">
+          /</button>
+        <button  id="multiply" style="width: 65px;" class="text-2xl h-16 m-px  bg-stone-300  hover:bg-stone-400 text-black font-bold py-2 px-4 rounded-full">
+          ×</button>
 
-        <button  id="seven" style="width: 82px;"  class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
+          <!--  -->
+        <button  id="seven" style="width: 65px;"  class="text-xl h-16 m-px  bg-stone-700  hover:bg-stone-400 text-white font-bold py-2 px-4 rounded-full">
           7</button>
-        <button  id="eight" style="width: 82px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
+        <button  id="eight" style="width: 65px;" class="text-xl h-16 m-px  bg-stone-700  hover:bg-stone-400 text-white font-bold py-2 px-4 rounded-full">
           8</button>
-        <button  id="nine" style="width: 82px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
+        <button  id="nine" style="width: 65px;" class="text-xl h-16 m-px  bg-stone-700  hover:bg-stone-400 text-white font-bold py-2 px-4 rounded-full">
           9</button>
-          <button  id="subtract" style="width: 82px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
-          -</button>
+          <button  id="subtract" style="width: 65px;" class="text-2xl h-16 m-px  bg-orange-600  hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full">
+          −</button>
 
-        <button  id="four" style="width: 82px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
+        <button  id="four" style="width: 65px;" class="text-xl h-16 m-px  bg-stone-700  hover:bg-stone-400 text-white font-bold py-2 px-4 rounded-full">
           4</button>
-        <button  id="five" style="width: 82px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
+        <button  id="five" style="width: 65px;" class="text-xl h-16 m-px  bg-stone-700  hover:bg-stone-400 text-white font-bold py-2 px-4 rounded-full">
           5</button>
-        <button  id="six" style="width: 82px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
+        <button  id="six" style="width: 65px;" class="text-xl h-16 m-px  bg-stone-700  hover:bg-stone-400 text-white font-bold py-2 px-4 rounded-full">
           6</button>
-          <button  id="add" style="width: 82px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
+          <button  id="add" style="width: 65px;" class="text-2xl h-16 m-px  bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full">
           +</button>
 
-        <button  id="one" style="width: 82px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
+        <button  id="one" style="width: 65px;" class="text-xl h-16 m-px  bg-stone-700  hover:bg-stone-400 text-white font-bold py-2 px-4 rounded-full">
           1</button>
-        <button  id="two" style="width: 82px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
+        <button  id="two" style="width: 65px;" class="text-xl h-16 m-px  bg-stone-700  hover:bg-stone-400 text-white font-bold py-2 px-4 rounded-full">
           2</button>
-        <button  id="three" style="width: 82px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
+        <button  id="three" style="width: 65px;" class="text-xl h-16 m-px  bg-stone-700  hover:bg-stone-400 text-white font-bold py-2 px-4 rounded-full">
           3</button>
-          <button  id="equals" style="width: 82px; height: 130px;" class=" m-px bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded">=</button>
+          <button  id="equals" style="width: 65px; height: 130px;" class="text-2xl m-px  bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full">
+          =</button>
 
-        <button  id="zero" style="width: 165px; margin-left: -82px; margin-top: -65px;" class="h-16 m-px bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
+        <button  id="zero" style="width: 130px; margin-left: -50px; margin-top: -65px;" class="text-xl h-16 m-px bg-stone-700 hover:bg-stone-400 text-white font-bold py-2 px-4 rounded-full">
           0</button>
-        <button  id="decimal" style="width: 82px; margin-top: -65px;" class="h-16 m-px  bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded">
+        <button  id="decimal" style="width: 65px; margin-top: -65px; margin-right: 15px;" class="text-2xl h-16 m-px   bg-stone-700  hover:bg-stone-400 text-white font-bold py-2 px-4 rounded-full">
           .</button>
       
       </div>
     </div>
 
-    <footer>
+  <footer class="fixed-bottom"> 
     <ul>
-      <li class="text-white">&copy; 2023 Daniela Moraes</li>
+      <li class="font-serif" style="margin-top: -15px">By Daniela Moraes</li>
     </ul>
   </footer> 
-
-  
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="main.js"></script>
